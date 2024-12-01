@@ -1,7 +1,6 @@
 
 'use client';
 import React, { useState } from 'react';
-import { Calculator, Plus, Minus } from 'lucide-react';
 
 interface FamilyMember {
   name: string;
@@ -18,10 +17,6 @@ interface Result {
 }
 
 const NumerologyCalculator = () => {
-  const [familyMembers, setFamilyMembers] = useState<FamilyMember[]>([
-    { name: '', day: '', month: '', year: '' }
-  ]);
-  const [yearRange, setYearRange] = useState({ start: '', end: '' });
   const [results, setResults] = useState<Result | null>(null);
   const [error, setError] = useState('');
 
@@ -49,11 +44,7 @@ const NumerologyCalculator = () => {
         year: 2024, // Example year
         yearNumber,
         luckyNumbers: calculateLuckyNumbers(yearNumber),
-        memberNumbers: familyMembers.map(member => ({
-          name: member.name,
-          number: parseInt(member.year) % 9 || 9,
-          isLucky: true, // Simplified logic
-        })),
+        memberNumbers: [],
       };
 
       setResults(years);
@@ -71,13 +62,6 @@ const NumerologyCalculator = () => {
           <h2>Results</h2>
           <p>Year: {results.year}</p>
           <p>Lucky Numbers: {results.luckyNumbers.join(', ')}</p>
-          <ul>
-            {results.memberNumbers.map((member, index) => (
-              <li key={index}>
-                {member.name}: {member.number} ({member.isLucky ? 'Lucky' : 'Unlucky'})
-              </li>
-            ))}
-          </ul>
         </div>
       )}
       {error && <p style={{ color: 'red' }}>{error}</p>}
