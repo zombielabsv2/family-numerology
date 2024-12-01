@@ -2,13 +2,6 @@
 'use client';
 import React, { useState } from 'react';
 
-interface FamilyMember {
-  name: string;
-  day: string;
-  month: string;
-  year: string;
-}
-
 interface Result {
   year: number;
   yearNumber: number;
