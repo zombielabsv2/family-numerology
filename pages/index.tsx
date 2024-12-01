@@ -1,6 +1,6 @@
 // pages/index.tsx
 import React from 'react';
-import NumerologyCalculator from './components/NumerologyCalculator';
+import NumerologyCalculator from '../components/NumerologyCalculator';
 
 const Home: React.FC = () => {
   return (
